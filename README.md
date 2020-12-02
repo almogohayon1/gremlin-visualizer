@@ -8,7 +8,7 @@ To setup gremlin visualizer, you need to have `node.js` and `npm` installed in y
 
 * Clone the project
 ```sh
-git clone https://github.com/prabushitha/gremlin-visualizer.git
+git clone https://github.com/almogohayon1/gremlin-visualizer.git
 ```
 * Install dependencies
 ```sh

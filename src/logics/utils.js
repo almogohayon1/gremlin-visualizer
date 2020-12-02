@@ -17,7 +17,6 @@ export const getDiffEdges = (newList, oldList) => {
 export const extractEdgesAndNodes = (nodeList, nodeLabels=[]) => {
   let edges = [];
   const nodes = [];
-
   const nodeLabelMap =_.mapValues( _.keyBy(nodeLabels, 'type'), 'field');
 
   _.forEach(nodeList, (node) => {

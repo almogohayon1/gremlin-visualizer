@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, TextField }  from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
 import { ACTIONS, QUERY_ENDPOINT, COMMON_GREMLIN_ERROR } from '../../constants';
 import { onFetchQuery } from '../../logics/actionHelper';
@@ -36,26 +36,30 @@ class Header extends React.Component {
     this.props.dispatch({ type: ACTIONS.SET_QUERY, payload: query });
   }
 
-  render(){
+  render() {
     return (
       <div className={'header'}>
         <form noValidate autoComplete="off">
-          <TextField value={this.props.host} onChange={(event => this.onHostChanged(event.target.value))} id="standard-basic" label="host" style={{width: '10%'}} />
-          <TextField value={this.props.port} onChange={(event => this.onPortChanged(event.target.value))} id="standard-basic" label="port" style={{width: '10%'}} />
-          <TextField value={this.props.query} onChange={(event => this.onQueryChanged(event.target.value))} id="standard-basic" label="gremlin query" style={{width: '60%'}} />
-          <Button variant="contained" color="primary" onClick={this.sendQuery.bind(this)} style={{width: '150px'}} >Execute</Button>
-          <Button variant="outlined" color="secondary" onClick={this.clearGraph.bind(this)} style={{width: '150px'}} >Clear Graph</Button>
+          <div id="connectionDetails" style={{ maxWidth: '600px', width: '100%', display: 'flex' }}>
+            <TextField value={this.props.host} onChange={(event => this.onHostChanged(event.target.value))} id="standard-basic" label="host" style={{ width: '100%', marginRight: '16px' }}/>
+            <TextField value={this.props.port} onChange={(event => this.onPortChanged(event.target.value))} id="standard-basic" label="port" style={{ width: '100px' }} />
+          </div>
+          <div style={{ width: '100%', marginBottom: '16px' }}>
+            <TextField value={this.props.query} onChange={(event => this.onQueryChanged(event.target.value))} id="standard-basic" label="gremlin query" style={{ width: '100%' }} />
+          </div>
+          <Button variant="contained" color="primary" onClick={this.sendQuery.bind(this)} style={{ width: '150px', marginRight: '8px' }} >Execute</Button>
+          <Button variant="outlined" color="secondary" onClick={this.clearGraph.bind(this)} style={{ width: '150px' }} >Clear Graph</Button>
         </form>
 
         <br />
-        <div style={{color: 'red'}}>{this.props.error}</div>
+        <div style={{ color: 'red' }}>{this.props.error}</div>
       </div>
 
     );
   }
 }
 
-export const HeaderComponent = connect((state)=>{
+export const HeaderComponent = connect((state) => {
   return {
     host: state.gremlin.host,
     port: state.gremlin.port,

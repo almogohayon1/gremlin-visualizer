@@ -1,7 +1,7 @@
 import { ACTIONS } from '../constants';
 
 const initialState = {
-  host: 'localhost',
+  host: 'tbpkbservice.eastus.cloudapp.azure.com',
   port: '8182',
   query: '',
   error: null
